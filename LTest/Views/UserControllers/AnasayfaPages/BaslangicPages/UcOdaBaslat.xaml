@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="LTest.Views.UserControllers.AnasayfaPages.UcOdaBaslat"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             mc:Ignorable="d" 
+             RenderOptions.BitmapScalingMode="HighQuality"
+             d:DesignWidth="1024"
+             d:DesignHeight="1024"
+             Loaded="UserControl_Loaded">
+    <StackPanel>
+        <Border Style="{StaticResource BorderStylePadding}" Height="90">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Style="{StaticResource StackPanel}">
+                    <Label Content="Test Adı:" Style="{StaticResource Label}" HorizontalContentAlignment="Right" />
+                    <ComboBox  x:Name="TestAdiComboBox" Style="{StaticResource ComboBox}" SelectionChanged="TestAdiComboBox_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanel}">
+                    <Label Content="Süre:" Style="{StaticResource Label}" HorizontalContentAlignment="Right" />
+                    <TextBox x:Name="Sure" MinWidth="150"  Style="{DynamicResource TextBox}" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanel}">
+                    <Label Content="Soru Sayısı:" Style="{StaticResource Label}" HorizontalContentAlignment="Right" />
+                    <TextBox x:Name="SoruSayisi" MinWidth="150"  Style="{DynamicResource TextBox}" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanel}">
+                    <Label Content="Cevap Sayısı:" Style="{StaticResource Label}" HorizontalContentAlignment="Right" />
+                    <TextBox x:Name="CevapSayisi" MinWidth="150"  Style="{DynamicResource TextBox}" IsReadOnly="True"/>
+                </StackPanel>
+                <Button  Click="OdayiOlustur" x:Name="OdaBaslatButton"  Style="{StaticResource  ButtonStyleMargin}">
+                    <Label Content="Odayı Başlat" Style="{DynamicResource ButtonText}"/>
+                </Button>
+                <Button x:Name="Kullanicilar" Click="KullaniciGoster" Style="{DynamicResource ButtonStyleMargin}">
+                    <Label Content="Kullanıcıları Göster"  Style="{DynamicResource ButtonText}"/>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Style="{StaticResource BorderStylePadding}">
+            </Border>
+            <Border Grid.Column="1" Style="{StaticResource BorderStylePadding}">
+                <StackPanel>
+                    <TextBlock Text="En Yüksek Skorlar" Style="{StaticResource Header}" Margin="0,5,0,0"/>
+                    <Border Style="{StaticResource BorderStyle}">
+                        <Grid>
+                            <ListView ItemsSource="{Binding .}" x:Name="EnCokKazanan" BorderThickness="0">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Kullanıcı Adı" HeaderContainerStyle="{StaticResource ColumnHeader}" x:Name="col1" Width="{Binding ElementName=HelperField1, Path=ActualWidth}">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding KullaniciAdi}" Style="{StaticResource ListViewText}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Puan" HeaderContainerStyle="{StaticResource ColumnHeader}" Width="{Binding ElementName=HelperField2, Path=ActualWidth}">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Puan}" Style="{StaticResource ListViewText}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Oyun Sayısı" HeaderContainerStyle="{StaticResource ColumnHeader}" Width="{Binding ElementName=HelperField3, Path=ActualWidth}">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding OyunSayisi}" Style="{StaticResource ListViewText}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Grid Visibility="Hidden">
+                                <Grid.ColumnDefinitions>
+                                    <!--Width is bound to width of the first GridViewColumn -->
+                                    <!--Width is set to "Fill"-->
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <!--Correction Width-->
+                                </Grid.ColumnDefinitions>
+                                <!--This is the hidden helper Field which is used to bind to, using the "Fill" column of the helper grid-->
+                                <Grid Grid.Column="0" x:Name="HelperField1"/>
+                                <Grid Grid.Column="1" x:Name="HelperField2"/>
+                                <Grid Grid.Column="2" x:Name="HelperField3"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Style="{StaticResource BorderStylePadding}">
+                <chartingToolkit:Chart Name="pieChart" Title="Kazanma Oranları" BorderThickness="0" FontSize="14" FontFamily="Cabin" Height="250">
+                    <chartingToolkit:PieSeries DependentValuePath="Value" IndependentValuePath="Key" BorderBrush="AntiqueWhite" BorderThickness="3" ItemsSource="{Binding}" IsSelectionEnabled="True" />
+                </chartingToolkit:Chart>
+            </Border>
+            <Border Grid.Column="1" Style="{StaticResource BorderStyle}">
+                <chartingToolkit:Chart Name="columnChart" Title="Kazanma Oranları"  BorderThickness="0" FontSize="14" FontFamily="Cabin" Height="250" RenderOptions.BitmapScalingMode="HighQuality">
+                    <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True" />
+                </chartingToolkit:Chart>
+            </Border>
+            <Border Grid.Column="2" Style="{StaticResource BorderStyle}">
+                <chartingToolkit:Chart Name="barChart" Title="Kazanma Oranları" BorderThickness="0" FontSize="14" FontFamily="Cabin" Height="250" RenderOptions.BitmapScalingMode="Fant">
+                    <chartingToolkit:BarSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True" />
+                </chartingToolkit:Chart>
+            </Border>
+        </Grid>
+    </StackPanel>
+</UserControl>

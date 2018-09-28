@@ -1,0 +1,100 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="UstMenuDock" TargetType="DockPanel">
+        <Setter Property="Margin" Value="16,0"/>
+    </Style>
+    <Style x:Key="Ellipse" TargetType="Ellipse">
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="Stroke" Value="DarkGray"/>
+        <Setter Property="StrokeThickness" Value="2"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="50"/>
+    </Style>
+
+    <Style x:Key="Rectangle" TargetType="Rectangle">
+        <Setter Property="Margin" Value="0,0,1,0"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="50"/>
+    </Style>
+    <Style x:Key="DikeySeparator" 
+       TargetType="{x:Type Separator}"
+       BasedOn="{StaticResource {x:Type Separator}}">
+        <Setter Property="Margin" Value="6,0,6,0"/>
+        <Setter Property="LayoutTransform">
+            <Setter.Value>
+                <TransformGroup>
+                    <TransformGroup.Children>
+                        <TransformCollection>
+                            <RotateTransform Angle="90"/>
+                        </TransformCollection>
+                    </TransformGroup.Children>
+                </TransformGroup>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="DockPanelStyle" TargetType="DockPanel">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter  Property="Dock" Value="Top"/>
+        <Setter Property="Margin" Value="3,15,3,0"/>
+    </Style>
+    <Style x:Key="DataGridRowStyle1" TargetType="{x:Type DataGridRow}">
+        <Setter Property="Foreground" Value="#FFB3B3B3"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template" Value="{DynamicResource DataGridRowControlTemplate1}"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF262626"/>
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                <Setter Property="Background" Value="#FF383838"/>
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                <Setter Property="Background" Value="#FF333333"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="TabItemStyle" TargetType="TabItem">
+        <Setter Property="Width" Value="98"/>
+        <Setter Property="FontFamily" Value="Titillium Web SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="#FF898484"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+    </Style>
+    <Style x:Key="BorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="Padding" Value="10,0,10,0"/>
+        <Setter Property="Margin" Value="10,10"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect 
+                       Opacity="0.20"
+                       Direction="0"
+                       Color= "{DynamicResource LightGrey}"
+                       BlurRadius="15"
+                       ShadowDepth="-5"
+                       RenderingBias="Quality"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BorderStylePadding" TargetType="Border" BasedOn="{StaticResource BorderStyle}">
+        <Setter Property="Padding" Value="10,10"></Setter>
+    </Style>
+    <Style x:Key="GirenKullaniciBorder" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource MediumGrey}"/>
+        <Setter Property="Margin" Value="0,-40,0,0"/>
+        <Setter Property="MinWidth" Value="80"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource DarkGrey}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="StackPanel" TargetType="StackPanel">
+        <Setter Property="Margin" Value="15,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,196 @@
+﻿<Window x:Class="LTest.Views.Anasayfa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        Title="L-Test"  WindowStartupLocation="CenterScreen"  Background="{x:Null}" MinWidth="700" MinHeight="550">
+
+        <!--/// Her çözünürlük değişikliğinde pencere genişliğini alır ve buna göre dizaynı şekillendirir. Temel olarak 3 farklı dizayn şekli var.       
+        /// Dizayn Tasarımı 1  min 1024px genişlik ve max yok  
+        /// Sol Menü 320 px - Iconlar 16px,  16 px margin var
+        /// 
+        /// Dizayn Tasarımı 2 max 1024px genişlik min 768px 
+        /// Sol Menü 48 px - Iconlar 16px, 16 px Margin var
+        /// 
+        /// Dizayn Tasarımı 3 max 768px min 360px
+        /// Menü Üstte taşınıyor.
+        /// Sol Menü 48 px - Icon 16 px, 16 px margin var.
+    
+    <Grid>
+        <Grid x:Name="AnaGrid" Loaded="AnaGrid_Loaded" Background="{StaticResource SoftGrey}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="320" x:Name="sideBar"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="0,0,5,0" Background="White" Grid.RowSpan="2">
+                <Grid.Effect>
+                    <DropShadowEffect 
+                       Opacity="0.20"
+                       Direction="0"
+                       Color="#FFF7F7F7"
+                       BlurRadius="15"
+                       ShadowDepth="15"
+                       RenderingBias="Quality"/>
+                </Grid.Effect>
+                <StackPanel x:Name="menuStack">
+                    <Button Style="{DynamicResource Toggle}" Click="Toggle">
+                        <Rectangle Style="{DynamicResource IconBox}" Margin="16,0,0,0">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource Menu}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <DockPanel Style="{StaticResource UstMenuDock}">
+                        <Ellipse Height="32" Width="32" Stroke="Black" HorizontalAlignment="Left" Margin="-8,0">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="Images/default-kullanici-resmi.png" Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Button Style="{StaticResource MenuButton}" Margin="8,0">
+                            <Label Style="{DynamicResource UstMenuLabel}" FontSize="24">
+                                <TextBlock Text="Giriş Yapın" VerticalAlignment="Center"/>
+                            </Label>
+                        </Button>
+                    </DockPanel>
+                    <DockPanel Height="48">
+
+                    </DockPanel>
+                    <Button Style="{DynamicResource MenuButton}" Click="Baglangic">
+                        <DockPanel Style="{DynamicResource UstMenuDock}">
+                            <Rectangle Style="{DynamicResource IconBoxWithTrigger}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource Home}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <Label Style="{DynamicResource UstMenuLabel}">
+                                <TextBlock Text="Ana Menü" VerticalAlignment="Center"/>
+                            </Label>
+                        </DockPanel>
+                    </Button>
+                    <Button Style="{DynamicResource MenuButton}" Click="Testler">
+                        <DockPanel Style="{DynamicResource UstMenuDock}">
+                            <Rectangle Style="{DynamicResource IconBoxWithTrigger}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource Test}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <Label Style="{DynamicResource UstMenuLabel}">
+                                <TextBlock Text="Testler" VerticalAlignment="Center"/>
+                            </Label>
+                        </DockPanel>
+                    </Button>
+                    <Button Style="{DynamicResource MenuButton}" Click="Sonuclar" >
+                        <DockPanel Style="{DynamicResource UstMenuDock}">
+                            <Rectangle Style="{DynamicResource IconBoxWithTrigger}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource Result}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <Label Style="{DynamicResource UstMenuLabel}">
+                                <TextBlock Text="Sonuçlar" VerticalAlignment="Center"/>
+                            </Label>
+                        </DockPanel>
+                    </Button>
+                    <Button Style="{DynamicResource MenuButton}" Click="Renkler">
+                    <DockPanel Style="{DynamicResource UstMenuDock}">
+                        <Rectangle Style="{DynamicResource IconBox}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource Color}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <Label Content="Renkler" Style="{DynamicResource UstMenuLabel}"/>
+                    </DockPanel>
+                </Button>
+    
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom">
+                    <Button Style="{DynamicResource Toggle}">
+                        <Rectangle Style="{DynamicResource IconBoxWithTrigger}" Margin="16,0,0,0">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource About}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Button Style="{DynamicResource Toggle}" Click="Ayarlar">
+                        <Rectangle Style="{DynamicResource IconBoxWithTrigger}" Margin="16,0,0,0">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource Setting}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            Ana Grid
+            <Grid Grid.Column="1" x:Name="grid" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="48"/>
+                </Grid.RowDefinitions>
+                İçerik
+                <ScrollViewer Grid.Row="0">
+                    <ContentControl x:Name="Icerik" Margin="0,0,5,0"/>
+                </ScrollViewer>
+
+                Alt Border
+                <Border Grid.Row="1" Background="{DynamicResource MainColor}" Style="{StaticResource BorderStyle}" Margin="-5,0,0,0">
+                    <Grid>
+                        <DockPanel HorizontalAlignment="Left" >
+                            <Rectangle Style="{DynamicResource IconBox}" x:Name="NotificationIcon" Fill="White" Width="24" Height="24">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <Label x:Name="NotificationLabel" x:FieldModifier="public" Style="{DynamicResource Label}" Foreground="White" Margin="5,0,0,0"/>
+                        </DockPanel>
+                        <Border Background="{StaticResource SoftGrey}" CornerRadius="5" Margin="5" Width="110" HorizontalAlignment="Right" >
+                            <DockPanel Margin="2">
+                                <Image x:Name="ActiveImage" x:FieldModifier="public" Margin="3,0,0,0" Width="24" Height="24" HorizontalAlignment="Left" gif:ImageBehavior.RepeatBehavior="0x" gif:ImageBehavior.AnimatedSource="Images/offline.gif" />
+                                <Label x:Name="ActiveLabel" x:FieldModifier="public" Content="Offline" Width="75" Foreground="Black" Height="24" Padding="6,0,0,0" FontFamily="Titillium Web SemiBold" FontSize="15"/>
+                            </DockPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        Giris
+        <Grid Name="Giris">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/giris-background.jpg" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
+            </Grid.Background>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Style="{StaticResource BorderStyle}" Height="500" Width="500">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,15">
+                                <ContentControl x:Name="mainContent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="-10,0">
+                            <Label Style="{StaticResource Label}" HorizontalAlignment="Center" Margin="0,10,0,0" Name="WarningText" Foreground="{StaticResource WarningColor}"></Label>
+                            <StackPanel Background="LightGray" >
+                                <Button HorizontalAlignment="Left" Name="NavigateButton" Style="{StaticResource NavigateButton}" Click="Navigate_Click" Visibility="Hidden" ToolTip="Geri Dön">
+                                    <Label Style="{StaticResource ButtonText}" Foreground="{StaticResource LabelGrey}" Padding="0" FontSize="12" Content="&lt;"/>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border Style="{StaticResource BorderStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="/LTest;component/Views/Images/icon.ico" Margin="0,5,10,5" Width="32"/>
+                        <Label Style="{StaticResource Label}" Foreground="{StaticResource LabelGrey}" Padding="4" Content="LTest Uygulaması V1.0.0" FontSize="14"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>-->
+    <Grid>
+        <ContentControl Name="AnasayfaIcerik" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </Grid>
+</Window>

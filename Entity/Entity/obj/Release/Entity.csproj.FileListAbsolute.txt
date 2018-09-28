@@ -1,0 +1,6 @@
+C:\Users\Hasan\Desktop\L-Test\Entity\Entity\bin\Release\Entity.dll
+C:\Users\Hasan\Desktop\L-Test\Entity\Entity\bin\Release\Entity.pdb
+C:\Users\Hasan\Desktop\L-Test\Entity\Entity\obj\Release\Entity.csprojResolveAssemblyReference.cache
+C:\Users\Hasan\Desktop\L-Test\Entity\Entity\obj\Release\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Hasan\Desktop\L-Test\Entity\Entity\obj\Release\Entity.dll
+C:\Users\Hasan\Desktop\L-Test\Entity\Entity\obj\Release\Entity.pdb

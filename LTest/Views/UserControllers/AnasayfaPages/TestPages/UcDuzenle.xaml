@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="LTest.Views.UserControllers.AnasayfaPages.TestPages.UcDuzenle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="Duzelt_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Border Style="{StaticResource BorderStylePadding}">
+                <StackPanel Orientation="Horizontal" Name="Olustur" x:FieldModifier="public">
+                    <StackPanel ToolTip="Test adını buradan belirtin." Style="{StaticResource StackPanel}">
+                        <Label Content="Test Adı" Width="90" Style="{StaticResource Label}" />
+                        <ComboBox x:Name="TestCombobox" Style="{StaticResource ComboBox}" SelectionChanged="TestCombobox_SelectionChanged"/>
+                    </StackPanel>
+                    <StackPanel ToolTip="Her sorunun kaç saniye olacağını bu kısımdan belirtin." Style="{StaticResource StackPanel}">
+                        <Label Content="Süre" Width="90" Style="{StaticResource Label}" />
+                        <Grid>
+                            <TextBox x:Name="SureTextbox" PreviewTextInput="SayiKontrol" Width="90" MaxLength="3" Style="{DynamicResource TextBox}" />
+                            <TextBlock IsHitTestVisible="False" Text="Saniye" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SureTextbox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel ToolTip="Test içindeki soru sayısını bu kısımdan belirtin." Style="{StaticResource StackPanel}">
+                        <Label Content="Soru Sayısı" Width="90" Style="{StaticResource Label}"/>
+                        <Grid>
+                            <TextBox x:Name="SoruTextbox" PreviewTextInput="SayiKontrol" MaxLength="2" Style="{DynamicResource TextBox}" TextChanged="Textbox_TextChanged" IsReadOnly="True"/>
+                            <TextBlock IsHitTestVisible="False" Text="1 ile 99 arası" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SoruTextbox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel ToolTip="Her soru için kaç cevap olacağını bu kısımdan ayarlayın." Style="{StaticResource StackPanel}">
+                        <Label Content="Cevap Sayısı"  Width="90" Style="{StaticResource Label}"/>
+                        <TextBox x:Name="CevapTextbox" PreviewTextInput="SayiKontrol" MaxLength="1" Style="{DynamicResource TextBox}" TextChanged="Textbox_TextChanged" IsReadOnly="True"/>
+                    </StackPanel>
+                    <Button ToolTip="Değişiklikleri kaydetmek için tıklayın." Style="{DynamicResource ButtonStyleBiggerSize}" Click="Duzelt">
+                        <Label Content="Değişiklikleri Kaydet" Style="{DynamicResource ButtonText}"/>
+                    </Button>
+                    <Button ToolTip="Testi silmek için tıklayın" Style="{DynamicResource ButtonStyleWarningWithMargin}" Click="Test_Sil">
+                        <Label Content="Testi Sil" Style="{DynamicResource ButtonText}"/>
+                    </Button>
+                    <!--<Button ToolTip="Test Belgesini Word'e çıkarın." Style="{DynamicResource WordButton}" Click="WordAktar_Click">
+                        <DockPanel>
+                            <Rectangle Style="{DynamicResource IconBoxButton}" Fill="White" Width="20" Height="20">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource Word}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <Label Content="Word'e Aktar" Style="{DynamicResource ButtonText}" Foreground="White" />
+                        </DockPanel>
+                    </Button>-->
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="1" x:Name="SoruStack">
+            <!--Kod ile Doluyor-->
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns:ınternals="http://xamarin.com/schemas/2014/forms" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="L-Test"
+             x:Class="Client.IpPage" BackgroundColor="#E1E1E1">
+    <Grid>
+        <ScrollView>
+            <StackLayout VerticalOptions="Start">
+                <Frame Style="{StaticResource Border}" IsVisible="False">
+                    <Label x:Name="Info" TextColor="DarkGray" HorizontalOptions="CenterAndExpand"/>
+                </Frame>
+                <Frame Style="{StaticResource Border}">
+                    <StackLayout >
+                        <Image Margin="-25,-20,-25,0" Source="image01.png" Aspect="AspectFill" HeightRequest="196"></Image>
+                        <Label Text="L-Test uygulamasına hoşgeldiniz." Margin="0,15,0,-10" HorizontalOptions="Center" VerticalOptions="Center" TextColor="DarkGray" FontSize="Large"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource Border}">
+                    <StackLayout>
+                        <Entry x:Name="Ip" Placeholder="iP Kodu" HorizontalTextAlignment="Center"/>
+                        <Button Text="Giriş Yap" x:Name="Giris" Clicked="Giris_Clicked" Style="{StaticResource ButtonStyle}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+        <Frame  Style="{StaticResource Border}" VerticalOptions="End" Margin="0">
+            <Label Text="Sunucunun olduğu ağa bağlı olduğunuzdan emin olun." TextColor="DarkGray" FontSize="Medium" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+        </Frame>
+    </Grid>
+</ContentPage>

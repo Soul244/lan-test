@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XamlProjectMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Files>
+    <XamlFileMeta>
+      <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\NamePage.xaml</FilePath>
+      <Hash>90-C8-E7-9F-71-31-33-95-14-1B-D5-1A-9E-F8-E1-92</Hash>
+      <Properties>
+        <string>Title</string>
+        <string>BackgroundColor</string>
+      </Properties>
+    </XamlFileMeta>
+    <XamlFileMeta>
+      <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\App.xaml</FilePath>
+      <Hash>21-EF-87-2B-19-0E-AD-85-83-32-28-7A-2F-CA-33-A7</Hash>
+      <Properties />
+    </XamlFileMeta>
+    <XamlFileMeta>
+      <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\IpPage.xaml</FilePath>
+      <Hash>E1-1C-3E-1D-3A-A6-94-19-AF-17-63-A2-AA-BF-1B-C5</Hash>
+      <Properties>
+        <string>Title</string>
+        <string>BackgroundColor</string>
+      </Properties>
+    </XamlFileMeta>
+  </Files>
+</XamlProjectMeta>
