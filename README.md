@@ -5,3 +5,7 @@ Uygulama paketi, C# ile yazılmış ve Windows üzerinde çalışan Server uygul
 Veritabanı kısmı SQlite isimli Sql motoru kullanılmıştır.
 
 Masaüstü tarafta uygulama, WPF altyapısı kullanılarak yazılmıştır.
+
+
+$ cat .gitattributes
+*.rb linguist-language=C#
