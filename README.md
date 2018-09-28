@@ -1,5 +1,4 @@
 # lan-test
-A Exam Application Working on Windows, Ios and Android
 
 Uygulama paketi, C# ile yazılmış ve Windows üzerinde çalışan Server uygulaması ve yine C# ile yazılmış, Xamarin Framework ile Android ve IOs üzerinde çalışabilen Client isimli mobil uygulamalardan oluşmaktadır. 
 
